@@ -130,5 +130,50 @@ namespace Proyecto_Fractales_Julia.Class
 
             return bitmap;
         }
+        // Método para resetear a valores iniciales
+        public void Reset()
+        {
+            xMin = -1.5;
+            xMax = 1.5;
+            yMin = -1.5;
+            yMax = 1.5;
+            maxIterations = 100;
+            colorOffset = 0;
+            colorScale = 10.0;
+            c = new Complex(-0.7, 0.27);
+        }
+
+        // Método para hacer zoom en un punto específico
+        public void Zoom(int mouseX, int mouseY, int width, int height, double zoomFactor)
+        {
+            // Convertir coordenadas de pantalla a coordenadas del fractal
+            double cx = xMin + (xMax - xMin) * mouseX / width;
+            double cy = yMin + (yMax - yMin) * (height - mouseY) / height;
+
+            // Aplicar zoom
+            xMin = cx - (cx - xMin) * zoomFactor;
+            xMax = cx + (xMax - cx) * zoomFactor;
+            yMin = cy - (cy - yMin) * zoomFactor;
+            yMax = cy + (yMax - cy) * zoomFactor;
+        }
+
+        // Método para mover la vista
+        public void Move(double moveX, double moveY)
+        {
+            double widthFrac = (xMax - xMin) * moveX;
+            double heightFrac = (yMax - yMin) * moveY;
+
+            xMin += widthFrac;
+            xMax += widthFrac;
+            yMin += heightFrac;
+            yMax += heightFrac;
+        }
+
+        // Ajustar el valor de c
+        public void AdjustC(double realDelta, double imagDelta)
+        {
+            c = new Complex(c.Real + realDelta, c.Imaginary + imagDelta);
+        }
+
     }
 }
