@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_Fractales_Julia
+namespace Proyectos_Fractales_Julia
 {
     internal static class Program
     {
