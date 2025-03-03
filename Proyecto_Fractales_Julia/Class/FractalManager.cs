@@ -48,5 +48,56 @@ namespace Proyecto_Fractales_Julia.Class
             }
         }
 
+        public void UpdateLabels()
+        {
+            form.lblFPS.Text = $"FPS: {CalculateFPS():F1}";
+            form.lblRangeX.Text = $"Rango X: [{julia.XMin:F4}, {julia.XMax:F4}]";
+            form.lblRangeY.Text = $"Rango Y: [{julia.YMin:F4}, {julia.YMax:F4}]";
+            form.lblIterations.Text = $"Iteraciones: {julia.MaxIterations}";
+            form.lblColorScale.Text = $"Escala de color: {julia.ColorScale:F1}";
+            form.lblConstant.Text = $"c: {julia.C.Real:F4} + {julia.C.Imaginary:F4}i";
+            form.lblCalcTime.Text = $"Tiempo de cálculo: {julia.CalculationTime:F2} segundos";
+        }
+
+        private float CalculateFPS()
+        {
+            float fps = frameCount / ((float)fpsTimer.ElapsedMilliseconds / 1000.0f);
+
+            // Reiniciar contador FPS cada segundo
+            if (fpsTimer.ElapsedMilliseconds >= 1000)
+            {
+                frameCount = 0;
+                fpsTimer.Restart();
+            }
+
+            return fps;
+        }
+
+        public void RefreshTimer_Tick(object sender, EventArgs e)
+        {
+            if (needsRedraw)
+            {
+                GenerateFractal();
+            }
+
+            frameCount++;
+            UpdateLabels();
+        }
+
+        public void OnFormClosing()
+        {
+            if (fractalImage != null)
+            {
+                fractalImage.Dispose();
+            }
+        }
+
+        public void SetNeedsRedraw(bool value)
+        {
+            needsRedraw = value;
+        }
     }
 }
+
+
+
