@@ -1,4 +1,4 @@
-﻿using Proyectos_Fractales_Julia.Class;
+﻿using Proyecto_Fractales_Julia.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +46,53 @@ namespace Proyectos_Fractales_Julia
 
             // Generar fractal inicial
             fractalManager.GenerateFractal();
+        }
+        private void SetupColorControls()
+        {
+            // Panel para contener los controles de color
+            Panel pnlColorControls = new Panel
+            {
+                Dock = DockStyle.Top,
+                Height = 100,
+                Padding = new Padding(10)
+            };
+
+            // TrackBar para Color Offset
+            Label lblColorOffset = new Label
+            {
+                Text = "Color Offset:",
+                AutoSize = true,
+                Location = new Point(10, 10)
+            };
+
+            trkColorOffset = new TrackBar
+            {
+                Minimum = 0,
+                Maximum = 1000,
+                Value = (int)(julia.ColorOffset * 10),
+                Width = 300,
+                Location = new Point(100, 10),
+                TickFrequency = 10
+            };
+
+
+
+            trkColorOffset.ValueChanged += trkColorOffset_ValueChanged;
+
+            // Añadir controles al panel
+            pnlColorControls.Controls.Add(lblColorOffset);
+            pnlColorControls.Controls.Add(trkColorOffset);
+            pnlColorControls.Controls.Add(lblColorScale);
+
+            // Añadir panel a la forma
+            Controls.Add(pnlColorControls);
+
+            // Ajustar la posición de los controles existentes si es necesario
+            if (picCanvas != null)
+            {
+                picCanvas.Location = new Point(picCanvas.Location.X, picCanvas.Location.Y + pnlColorControls.Height);
+                picCanvas.Height -= pnlColorControls.Height;
+            }
         }
 
         private void btnInterations_Click(object sender, EventArgs e)
@@ -119,6 +166,14 @@ namespace Proyectos_Fractales_Julia
 
             txtIterations.Text = julia.MaxIterations.ToString(); 
             fractalManager.GenerateFractal();
+        }
+
+        private void trkColorOffset_ValueChanged(object sender, EventArgs e)
+        {
+            double newOffset = trkColorOffset.Value / 10.0;
+            julia.ColorOffset = newOffset;
+            fractalManager.SetNeedsRedraw(true);
+        
         }
     }
 }

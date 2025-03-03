@@ -39,15 +39,17 @@
             this.lblConstant = new System.Windows.Forms.Label();
             this.lblCalcTime = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
+            this.trkColorOffset = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkColorOffset)).BeginInit();
             this.SuspendLayout();
             // 
             // picCanvas
             // 
             this.picCanvas.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picCanvas.Location = new System.Drawing.Point(139, 0);
+            this.picCanvas.Location = new System.Drawing.Point(251, 0);
             this.picCanvas.Name = "picCanvas";
-            this.picCanvas.Size = new System.Drawing.Size(885, 563);
+            this.picCanvas.Size = new System.Drawing.Size(885, 684);
             this.picCanvas.TabIndex = 0;
             this.picCanvas.TabStop = false;
             this.picCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseDown);
@@ -73,7 +75,7 @@
             // lblFPS
             // 
             this.lblFPS.AutoSize = true;
-            this.lblFPS.Location = new System.Drawing.Point(166, 32);
+            this.lblFPS.Location = new System.Drawing.Point(27, 352);
             this.lblFPS.Name = "lblFPS";
             this.lblFPS.Size = new System.Drawing.Size(47, 16);
             this.lblFPS.TabIndex = 3;
@@ -82,7 +84,7 @@
             // lblRangeX
             // 
             this.lblRangeX.AutoSize = true;
-            this.lblRangeX.Location = new System.Drawing.Point(166, 60);
+            this.lblRangeX.Location = new System.Drawing.Point(27, 380);
             this.lblRangeX.Name = "lblRangeX";
             this.lblRangeX.Size = new System.Drawing.Size(44, 16);
             this.lblRangeX.TabIndex = 4;
@@ -91,7 +93,7 @@
             // lblRangeY
             // 
             this.lblRangeY.AutoSize = true;
-            this.lblRangeY.Location = new System.Drawing.Point(166, 89);
+            this.lblRangeY.Location = new System.Drawing.Point(27, 409);
             this.lblRangeY.Name = "lblRangeY";
             this.lblRangeY.Size = new System.Drawing.Size(44, 16);
             this.lblRangeY.TabIndex = 5;
@@ -100,7 +102,7 @@
             // lblIterations
             // 
             this.lblIterations.AutoSize = true;
-            this.lblIterations.Location = new System.Drawing.Point(166, 116);
+            this.lblIterations.Location = new System.Drawing.Point(27, 436);
             this.lblIterations.Name = "lblIterations";
             this.lblIterations.Size = new System.Drawing.Size(44, 16);
             this.lblIterations.TabIndex = 6;
@@ -109,7 +111,7 @@
             // lblColorScale
             // 
             this.lblColorScale.AutoSize = true;
-            this.lblColorScale.Location = new System.Drawing.Point(166, 144);
+            this.lblColorScale.Location = new System.Drawing.Point(27, 464);
             this.lblColorScale.Name = "lblColorScale";
             this.lblColorScale.Size = new System.Drawing.Size(44, 16);
             this.lblColorScale.TabIndex = 7;
@@ -118,7 +120,7 @@
             // lblConstant
             // 
             this.lblConstant.AutoSize = true;
-            this.lblConstant.Location = new System.Drawing.Point(166, 171);
+            this.lblConstant.Location = new System.Drawing.Point(27, 491);
             this.lblConstant.Name = "lblConstant";
             this.lblConstant.Size = new System.Drawing.Size(44, 16);
             this.lblConstant.TabIndex = 8;
@@ -127,7 +129,7 @@
             // lblCalcTime
             // 
             this.lblCalcTime.AutoSize = true;
-            this.lblCalcTime.Location = new System.Drawing.Point(166, 198);
+            this.lblCalcTime.Location = new System.Drawing.Point(27, 518);
             this.lblCalcTime.Name = "lblCalcTime";
             this.lblCalcTime.Size = new System.Drawing.Size(44, 16);
             this.lblCalcTime.TabIndex = 9;
@@ -143,11 +145,20 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // trkColorOffset
+            // 
+            this.trkColorOffset.Location = new System.Drawing.Point(20, 178);
+            this.trkColorOffset.Name = "trkColorOffset";
+            this.trkColorOffset.Size = new System.Drawing.Size(104, 56);
+            this.trkColorOffset.TabIndex = 15;
+            this.trkColorOffset.ValueChanged += new System.EventHandler(this.trkColorOffset_ValueChanged);
+            // 
             // frmConjuntoJulia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 563);
+            this.ClientSize = new System.Drawing.Size(1136, 684);
+            this.Controls.Add(this.trkColorOffset);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblCalcTime);
             this.Controls.Add(this.lblConstant);
@@ -160,9 +171,11 @@
             this.Controls.Add(this.txtIterations);
             this.Controls.Add(this.picCanvas);
             this.Name = "frmConjuntoJulia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conjunto de Julia";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmConjuntoJulia_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkColorOffset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,6 +194,7 @@
         internal System.Windows.Forms.Label lblConstant;
         internal System.Windows.Forms.Label lblCalcTime;
         internal System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.TrackBar trkColorOffset;
     }
 }
 

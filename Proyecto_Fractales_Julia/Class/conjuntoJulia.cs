@@ -17,6 +17,13 @@ namespace Proyecto_Fractales_Julia.Class
         private double colorOffset = 0;
         private double colorScale = 10.0;
         private Complex c = new Complex(-0.7, 0.27);
+        //private Complex c = new Complex(-0.4, 0.6);
+        //private Complex c = new Complex(0.285,0.01);
+        //private Complex c = new Complex(-0.835, -0.2321);
+        //private Complex c = new Complex(0, 0.8);
+        //private Complex c = new Complex(-1.476, 0);
+        //private Complex c = new Complex(-0.8, 0.156);
+        //private Complex c = new Complex(0, -1);
 
 
         public int MaxIterations { get => maxIterations; set => maxIterations = value; }
@@ -52,12 +59,12 @@ namespace Proyecto_Fractales_Julia.Class
         private Color GetColor(double iterations, int maxIter, double offset, double scale)
         {
             if (iterations >= maxIter)
-                return Color.Black; // Negro para los puntos dentro del conjunto
+                return Color.Black; 
 
             // Normalización y colorización usando HSV
             double normalized = ((iterations + offset) / scale) % 1.0;
 
-            // Convertir de HSV a RGB (en C# no tenemos colorsys como en Python)
+           
             return HSVToRGB(normalized, 1.0, iterations < maxIter ? 1.0 : 0.0);
         }
 
@@ -140,7 +147,7 @@ namespace Proyecto_Fractales_Julia.Class
             maxIterations = 100;
             colorOffset = 0;
             colorScale = 10.0;
-            c = new Complex(-0.7, 0.27);
+            c = C;
         }
 
         // Método para hacer zoom en un punto específico

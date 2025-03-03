@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyectos_Fractales_Julia;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -54,7 +55,7 @@ namespace Proyecto_Fractales_Julia.Class
             form.lblRangeX.Text = $"Rango X: [{julia.XMin:F4}, {julia.XMax:F4}]";
             form.lblRangeY.Text = $"Rango Y: [{julia.YMin:F4}, {julia.YMax:F4}]";
             form.lblIterations.Text = $"Iteraciones: {julia.MaxIterations}";
-            form.lblColorScale.Text = $"Escala de color: {julia.ColorScale:F1}";
+            form.lblColorScale.Text = $"Escala de color: {julia.ColorOffset:F1}";
             form.lblConstant.Text = $"c: {julia.C.Real:F4} + {julia.C.Imaginary:F4}i";
             form.lblCalcTime.Text = $"Tiempo de cálculo: {julia.CalculationTime:F2} segundos";
         }
